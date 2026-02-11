@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <title>我的私人图书馆</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+  <style>
+    .markdown-section img {
+      max-width: 100%; /* 确保图片不会横向溢出屏幕 */
+      display: block;
+      margin: 1em auto; /* 图片居中显示 */
+    }
+  </style>
 </head>
 <body>
   <div id="app">正在加载书卷...</div>
@@ -15,5 +22,31 @@
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  
+  <script>
+  // Docsify 插件：解析 Pandoc 的图片尺寸属性
+  window.$docsify.plugins = [].concat(function(hook, vm) {
+    hook.doneEach(function() {
+      // 寻找所有图片
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        // 检查图片的父元素或紧跟的文本节点是否包含 {width=...}
+        const nextNode = img.nextSibling;
+        if (nextNode && nextNode.nodeType === 3) { // 如果是文本节点
+          const match = nextNode.textContent.match(/\{width="([^"]*)"\s+height="([^"]*)"\}/);
+          if (match) {
+            // 1. 设置图片尺寸
+            img.style.width = match[1];
+            img.style.height = match[2];
+            // 2. 抹除那些烦人的文字
+            nextNode.textContent = nextNode.textContent.replace(match[0], '');
+          }
+        }
+      });
+    });
+  }, window.$docsify.plugins);
+</script>
+
 </body>
 </html>
+
