@@ -6,11 +6,34 @@
   <title>我的私人图书馆</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
   <style>
+  /* 1. 之前的图片控制代码 */
     .markdown-section img {
       max-width: 100%; /* 确保图片不会横向溢出屏幕 */
       display: block;
       margin: 1em auto; /* 图片居中显示 */
     }
+  
+  /* 2. 新加的全局字体和字号调配 */
+    body {
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    .markdown-section {
+      max-width: 800px;
+      font-size: 18px;      /* 建议字号 */
+      line-height: 1.8;     /* 建议行高 */
+      letter-spacing: 0.5px;
+      padding: 2rem 1.5rem;
+    }
+
+    /* 3. 手机端的特殊微调 */
+    @media screen and (max-width: 768px) {
+      .markdown-section {
+        font-size: 16px;
+        padding: 1rem;
+      }
+    }
+    
   </style>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
 </head>
