@@ -12,7 +12,7 @@
       display: block;
       margin: 1em auto; /* 图片居中显示 */
     }
-  
+
   /* 2. 新加的全局字体和字号调配 */
     body {
       font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -25,7 +25,7 @@
       letter-spacing: 0.5px;
       padding: 2rem 1.5rem;
     }
-
+    
     /* 3. 手机端的特殊微调 */
     @media screen and (max-width: 768px) {
       .markdown-section {
@@ -33,7 +33,24 @@
         padding: 1rem;
       }
     }
-    
+
+/* 调整深色模式下的具体颜色 */
+:root {
+  /* 这里定义深色模式下的变量 */
+  --dark-background: #1e1e1e;    /* 主背景色：深灰色（原版通常较亮） */
+  --dark-paper: #252525;         /* 侧边栏或卡片背景色 */
+  --dark-text: #d4d4d4;          /* 文字颜色：稍微调暗一点的白色，保护眼睛 */
+}
+
+/* 如果你希望侧边栏更黑一点 */
+.sidebar {
+  background-color: var(--dark-background) !important;
+}
+
+/* 针对正文区域的微调 */
+section.content {
+  background-color: var(--dark-background) !important;
+}
   </style>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
 </head>
