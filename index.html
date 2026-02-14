@@ -35,11 +35,23 @@
     }
 
 /* 调整深色模式下的具体颜色 */
-:root {
-  /* 这里定义深色模式下的变量 */
-  --dark-background: #1e1e1e;    /* 主背景色：深灰色（原版通常较亮） */
-  --dark-paper: #252525;         /* 侧边栏或卡片背景色 */
-  --dark-text: #d4d4d4;          /* 文字颜色：稍微调暗一点的白色，保护眼睛 */
+
+body.dark {
+  background-color: #1e1e1e !important;
+}
+
+/* 针对电脑端主体容器的精准打击 */
+body.dark .content, 
+body.dark main, 
+body.dark .markdown-section {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important; /* 确保文字颜色也能保持协调 */
+}
+
+/* 侧边栏（你已经成功的部分，保持一致） */
+body.dark .sidebar {
+  background-color: #1e1e1e !important;
+  border-right-color: #333; /* 给侧边栏加一个很暗的分割线，增加高级感 */
 }
 
 /* 如果你希望侧边栏更黑一点 */
